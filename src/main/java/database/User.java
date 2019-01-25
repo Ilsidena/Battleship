@@ -1,44 +1,40 @@
 package database;
 
 public class User {
-    private String id;
+    private int id;
     private String name;
     private String login;
     private String password;
+    private long scores;
     private boolean isAdmin;
     private boolean isBot;
 
     User(String data){
         String [] array = data.split(":");
-        this.id = array[0];
+        this.id = Integer.parseInt(array[0]);
         this.name = array[1];
         this.login = array[2];
-        this.password = array[2];
-        this.isAdmin = array[4].equals("true");
-        this.isBot = array[5].equals("true");
+        this.password = array[3];
+        this.scores = Long.parseLong(array[4]);
+        this.isAdmin = array[5].equals("true");
+        this.isBot = array[6].equals("true");
     }
 
-    public User(String id, String name, boolean isAdmin, boolean isBot) {
-        this.id = id;
-        this.name = name;
-        this.isAdmin = isAdmin;
-        this.isBot = isBot;
-    }
-
-    public User(String id, String name, String login, String password, boolean isAdmin, boolean isBot) {
+    public User(int id, String name, String login, String password, long scores, boolean isAdmin, boolean isBot) {
         this.id = id;
         this.name = name;
         this.login = login;
         this.password = password;
+        this.scores = scores;
         this.isAdmin = isAdmin;
         this.isBot = isBot;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -64,6 +60,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getScores() {
+        return scores;
+    }
+
+    public void setScores(long scores) {
+        this.scores = scores;
     }
 
     public boolean isAdmin() {

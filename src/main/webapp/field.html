@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/field_style.css">
+    <title>Battleship</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="input-form-container">
+    <h2 id="player_move"></h2>
+    <div class="sb-field">
+        <h3>Your field</h3>
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>1</th> <th>2</th> <th>3</th> <th>4</th> <th>5</th>
+                <th>6</th> <th>7</th> <th>8</th> <th>9</th> <th>10</th>
+            </tr>
+            </thead>
+            <tr>
+                <th>A</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>B</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>C</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>D</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>E</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>F</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>G</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>H</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>I</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+            <tr>
+                <th>J</th>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+                <td><div class="sb-element"></div></td>
+            </tr>
+        </table>
+    </div>
+    <div class="sb-field">
+        <h3>Enemy's field</h3>
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>1</th> <th>2</th> <th>3</th> <th>4</th> <th>5</th>
+                <th>6</th> <th>7</th> <th>8</th> <th>9</th> <th>10</th>
+            </tr>
+            </thead>
+            <tr>
+                <th>A</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>B</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>C</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>D</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>E</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>F</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>G</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>H</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>I</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+            <tr>
+                <th>J</th>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+                <td><div class="sb-element sb-target"></div></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<!--<script src="js/build_field.js"></script>-->
+</body>
+<script src="js/x.js"></script>
+</html>

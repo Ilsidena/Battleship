@@ -6,6 +6,96 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
+    <servlet-name>StartGameServlet</servlet-name>
+    <servlet-class>servlets.StartGameServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>StartGameServlet</servlet-name>
+    <url-pattern>/start_game</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MoveServlet</servlet-name>
+    <servlet-class>servlets.MoveServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>MoveServlet</servlet-name>
+    <url-pattern>/move</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>FillFieldServlet</servlet-name>
+    <servlet-class>servlets.FillFieldServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>FillFieldServlet</servlet-name>
+    <url-pattern>/fill_field</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GetAllUsersServlet</servlet-name>
+    <servlet-class>servlets.GetAllUsersServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GetAllUsersServlet</servlet-name>
+    <url-pattern>/get_all_users</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GetAllGamesServlet</servlet-name>
+    <servlet-class>servlets.GetAllGamesServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GetAllGamesServlet</servlet-name>
+    <url-pattern>/get_all_games</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GetUserGamesServlet</servlet-name>
+    <servlet-class>servlets.GetUserGamesServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GetUserGamesServlet</servlet-name>
+    <url-pattern>/get_user_games</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GetRatingServlet</servlet-name>
+    <servlet-class>servlets.GetRatingServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GetRatingServlet</servlet-name>
+    <url-pattern>/get_rating</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>UserProfileServlet</servlet-name>
+    <servlet-class>servlets.UserProfileServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UserProfileServlet</servlet-name>
+    <url-pattern>/user_profile</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GetGameServlet</servlet-name>
+    <servlet-class>servlets.GetGameServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GetGameServlet</servlet-name>
+    <url-pattern>/get_game</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>SignupServlet</servlet-name>
     <servlet-class>servlets.SignupServlet</servlet-class>
   </servlet>

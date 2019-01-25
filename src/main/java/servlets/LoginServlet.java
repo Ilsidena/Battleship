@@ -7,6 +7,7 @@ import javax.servlet.http.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -16,12 +17,15 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         User user = null;
+        int activeGames = 0;
 
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/battleship?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
                                                             , "anna"
                                                             , "12345678");
             user = UsersTable.getUser(con, login, password);
+            activeGames = GamesTable.getActiveGames(con);
+            con.close();
         } catch (UserNotFoundException e){
             this.sendErrorMessage(out, e.getMessage());
             return;
@@ -37,14 +41,15 @@ public class LoginServlet extends HttpServlet {
         }
 
         if (user.isAdmin()) {
-            request.getRequestDispatcher("admin_head.html").include(request, response);
+            request.getRequestDispatcher("admin_header.html").include(request, response);
             HttpSession session = request.getSession();
             session.setAttribute("name", user.getId());
-            out.println("Hello, admin"); // for check
+            out.println("<p>Data: " + new Date().toString() + "</p>");
+            out.println("<p>Active games: " + activeGames + "</p>");
         } else if (user.isBot()){
             // do something
         } else {
-            request.getRequestDispatcher("user_profile.html").include(request, response);
+            request.getRequestDispatcher("user_header.html").include(request, response);
             HttpSession session = request.getSession();
             session.setAttribute("name", user.getId());
             out.println("Welcome, " + user.getName()); // for check

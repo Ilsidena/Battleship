@@ -9,6 +9,6 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        request.getRequestDispatcher("src/main/webapp/WEB-INF/index.html").include(request, response);
+        request.getRequestDispatcher("index.html").include(request, response);
     }
 }

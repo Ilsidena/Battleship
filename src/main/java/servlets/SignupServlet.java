@@ -1,5 +1,6 @@
 package servlets;
 
+import database.ExistingUserExceptiont;
 import database.User;
 import database.UserNotFoundException;
 import database.UsersTable;
@@ -32,7 +33,11 @@ public class SignupServlet extends HttpServlet {
                     , "anna"
                     , "12345678");
             user = UsersTable.newUser(con, login, password, name);
+            con.close();
         } catch (UserNotFoundException e){
+            this.sendErrorMessage(out, e.getMessage());
+            return;
+        } catch (ExistingUserExceptiont e){
             this.sendErrorMessage(out, e.getMessage());
             return;
         } catch (SQLException e){
@@ -47,14 +52,14 @@ public class SignupServlet extends HttpServlet {
         }
 
         if (user.isAdmin()) {
-            request.getRequestDispatcher("admin_head.html").include(request, response);
+            request.getRequestDispatcher("admin_header.html").include(request, response);
             HttpSession session = request.getSession();
             session.setAttribute("name", user.getId());
             out.println("Hello, admin"); // for check
         } else if (user.isBot()){
             // do something
         } else {
-            request.getRequestDispatcher("user_profile.html").include(request, response);
+            request.getRequestDispatcher("user_header.html").include(request, response);
             HttpSession session = request.getSession();
             session.setAttribute("name", user.getId());
             out.println("Welcome"); // for check
