@@ -7,8 +7,8 @@ Main.class
 servlets/MoveServlet$Cell.class
 database/UsersTable.class
 servlets/LoginServlet.class
-servlets/GetAllGamesServlet.class
 database/GamesTable.class
+servlets/GetAllGamesServlet.class
 database/GameNotFoundException.class
 servlets/GetRatingServlet.class
 database/User.class
@@ -16,13 +16,15 @@ database/ListOfGames.class
 database/UserNotFoundException.class
 database/Cell.class
 servlets/FillFieldServlet$Feild.class
+servlets/NewGameServlet.class
+servlets/PlayGameServlet.class
+database/GameUpdateException.class
 servlets/FillFieldServlet.class
 servlets/UserProfileServlet.class
-database/GameUpdateException.class
 database/RatingRow.class
 servlets/GetAllUsersServlet.class
 servlets/SignupServlet.class
 database/ExistingUserExceptiont.class
 servlets/GetUserGamesServlet.class
-servlets/GetGameServlet.class
 database/Rating.class
+servlets/GetGameServlet.class

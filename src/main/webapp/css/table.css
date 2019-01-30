@@ -1,3 +1,29 @@
+#block_container
+{
+	text-align:left;
+}
+#bloc1, #bloc2
+{
+	display:inline-block;
+	vertical-align:top
+}
+.game
+{
+	visibility:hidden;
+}
+.field
+{
+	display:inline-block;
+	vertical-align:top
+}
+.left {
+  float: left;
+  display: inline
+}
+.right {
+  float: left;
+  display: inline
+}
 .main-div {
 	text-align: center;
 }

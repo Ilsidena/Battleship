@@ -1,0 +1,152 @@
+body
+{
+	font-family: "Courier", Monospace;
+	color: #6E6E6E;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#menu
+{
+    text-align: center;
+	color: #9CC5DD;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.titlepage
+{
+    font-weight: bold;
+    font-size: 50px;
+    color: #2C7396;
+}
+
+a:visited, a:active
+{
+    color: #9E9E9E;
+}
+
+#start_button
+{
+    background: #F2F3F3;
+    color: #6E6E6E;
+    border-style: solid;
+    border-color: #6E6E6E;
+    font-family: "Courier", Monospace;
+    font-weight: bold;
+    font-size: 15px;
+    height: 30px;
+    width: 60px;
+    text-shadow:none;
+    margin-left: 10px;
+}
+
+#enemy_name
+{
+    background: #F2F3F3;
+    color: #6E06E6E;
+    border-style: solid;
+    border-color: #6E6E6E;
+    font-family: "Courier", Monospace;
+    font-weight: bold;
+    font-size: 15px;
+    text-shadow:none;
+    margin-left: 10px;
+}
+
+.game
+{
+	visibility:hidden;
+}
+
+.field
+{
+	display:inline-block;
+	vertical-align:top;
+}
+
+#block_container
+{
+    margin-left: 50px;
+}
+
+.table_row
+{
+	background-color: #F2F3F3;
+	text-align: center;
+}
+
+#block1, #block2
+{
+	display:inline-block;
+	vertical-align:top;
+}
+
+#block2
+{
+    margin-left: 50px;
+}
+
+.table_cell
+{
+    padding: 10px;
+}
+
+.left
+{
+  float: left;
+  display: inline;
+}
+
+.right
+{
+  float: left;
+  display: inline
+}
+
+.sb-field
+{
+	border: 1px solid black;
+	display: inline-block;
+}
+
+.sb-element
+{
+	width: 30px;
+	height: 30px;
+	background-color: #eeeeec;
+}
+
+.sb-our-ship
+{
+	background-color: blue;
+}
+
+.sb-enemy-ship
+{
+	background-color: red;
+}
+
+.sb-target:hover
+{
+	background-image: url('resources/target.png');
+	background-size: 30px  30px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.sb-hit
+{
+	background-image: url('resources/hit.png');
+	background-size: 30px  30px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.sb-miss
+{
+	background-image: url('resources/miss.png');
+	background-size: 30px  30px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}

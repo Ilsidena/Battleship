@@ -122,8 +122,7 @@ public class UsersTable {
         }
     }
 
-    public static int getID (Connection con, String name) {
-        try {
+    public static int getID (Connection con, String name) throws SQLException {
             String sql = "SELECT id FROM battleship.users WHERE name = ?";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, name);
@@ -131,9 +130,5 @@ public class UsersTable {
             rs.first();
 
             return rs.getInt(1);
-        } catch (SQLException e){
-            e.printStackTrace();
-            return -1;
-        }
     }
 }

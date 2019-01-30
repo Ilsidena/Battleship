@@ -1,10 +1,10 @@
-var _gameID = 1;
-var _myID = 3;
+var _gameID = $("#pointpoint");
+alert(_gameID);
 
 function callAJAX(){
     $.ajax({
         dataType: "json",
-        url: "http://localhost:8080/Battleship/get_game?id=1",
+        url: "http://localhost:8080/Battleship/get_game?id=" + _gameID,
         success: function (data) {
                      var field = data.field;
                      var move = data.move;

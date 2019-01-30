@@ -6,13 +6,23 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
-    <servlet-name>StartGameServlet</servlet-name>
-    <servlet-class>servlets.StartGameServlet</servlet-class>
+    <servlet-name>PlayGameServlet</servlet-name>
+    <servlet-class>servlets.PlayGameServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>StartGameServlet</servlet-name>
-    <url-pattern>/start_game</url-pattern>
+    <servlet-name>PlayGameServlet</servlet-name>
+    <url-pattern>/play_game</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>NewGameServlet</servlet-name>
+    <servlet-class>servlets.NewGameServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>NewGameServlet</servlet-name>
+    <url-pattern>/new_game</url-pattern>
   </servlet-mapping>
 
   <servlet>

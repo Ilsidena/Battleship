@@ -1,4 +1,5 @@
-var _gameID = 1;
+var _gameID = $("#pointpoint");
+alert(_gameID);
 
 function callAJAX(){
     $.ajax({

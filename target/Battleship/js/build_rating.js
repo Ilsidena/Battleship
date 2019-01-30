@@ -1,7 +1,7 @@
 function callAJAX(){
     $.ajax({
         dataType: "json",
-        url: "http://localhost:8080/Battleship/get_user_games",
+        url: "http://localhost:8080/Battleship/get_rating",
         success: function (data) {
                     var table = $("<table></table>")
                                     .addClass("table")
@@ -18,7 +18,7 @@ function callAJAX(){
                             $("<tr></tr>")
                                 .addClass("table-row")
                                 .append(
-                                    $("<td></td>").html(i + 1)
+                                    $("<td></td>").html("#" + (i + 1))
                                 )
                                 .append(
                                     $("<td></td>").html(d.name)
@@ -35,7 +35,7 @@ function callAJAX(){
                     tableDiv.append(
                             $("<h2></h2>")
                                 .addClass("title-of-table")
-                                .html("the title")
+                                .html("")
                         )
                         .append(table);
 
