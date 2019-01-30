@@ -6,6 +6,8 @@ body
 	font-size: 20px;
 }
 
+
+
 #menu
 {
     text-align: center;
@@ -19,6 +21,7 @@ body
     font-weight: bold;
     font-size: 50px;
     color: #2C7396;
+    text-align: center;
 }
 
 a:visited, a:active
@@ -114,7 +117,7 @@ a:visited, a:active
 {
 	width: 30px;
 	height: 30px;
-	background-color: #eeeeec;
+	background-color: #F2F3F3;
 }
 
 .sb-our-ship
@@ -149,4 +152,20 @@ a:visited, a:active
 	background-size: 30px  30px;
 	background-repeat: no-repeat;
 	background-position: center center;
+}
+
+.login_button .login_form {
+    display: none;
+}
+
+.login_button:hover .login_form{
+    display: block;
+}
+
+.signup_button .signup_form {
+    display: none;
+}
+
+.signup_button:hover .signup_form{
+    display: block;
 }
