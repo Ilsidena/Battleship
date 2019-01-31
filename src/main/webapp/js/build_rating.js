@@ -3,41 +3,33 @@ function callAJAX(){
         dataType: "json",
         url: "http://localhost:8080/Battleship/get_rating",
         success: function (data) {
+                    $("#block1").html("");
                     var table = $("<table></table>")
                                     .addClass("table")
                                     .append(
                                         $("<tr></tr>")
-                                            .addClass("table-row")
-                                            .append($("<th></th>").html("#"))
-                                            .append($("<th></th>").html("name"))
-                                            .append($("<th></th>").html("scores"))
+                                            .addClass("table_row")
+                                            .append($("<th></th>").addClass("table_cell").html("#"))
+                                            .append($("<th></th>").addClass("table_cell").html("Name"))
+                                            .append($("<th></th>").addClass("table_cell").html("Scores"))
                                     );
 
                     data.players.forEach(function(d, i){
                         table.append(
                             $("<tr></tr>")
-                                .addClass("table-row")
+                                .addClass("table_row")
                                 .append(
-                                    $("<td></td>").html("#" + (i + 1))
+                                    $("<td></td>").addClass("table_cell").html(i + 1)
                                 )
                                 .append(
-                                    $("<td></td>").html(d.name)
+                                    $("<td></td>").addClass("table_cell").html(d.name)
                                 )
                                 .append(
-                                    $("<td></td>").html(d.scores)
+                                    $("<td></td>").addClass("table_cell").html(d.scores)
                                 )
                         );
                     });
-
-                    var tableDiv = $("#tableDiv");
-                    tableDiv.html("");
-
-                    tableDiv.append(
-                            $("<h2></h2>")
-                                .addClass("title-of-table")
-                                .html("")
-                        )
-                        .append(table);
+                    $("#block1").append(table);
 
                     setTimeout(callAJAX(), 1000);
                  }

@@ -6,16 +6,6 @@
   <display-name>Archetype Created Web Application</display-name>
 
   <servlet>
-    <servlet-name>PlayGameServlet</servlet-name>
-    <servlet-class>servlets.PlayGameServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>PlayGameServlet</servlet-name>
-    <url-pattern>/play_game</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
     <servlet-name>NewGameServlet</servlet-name>
     <servlet-class>servlets.NewGameServlet</servlet-class>
   </servlet>
@@ -33,16 +23,6 @@
   <servlet-mapping>
     <servlet-name>MoveServlet</servlet-name>
     <url-pattern>/move</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>FillFieldServlet</servlet-name>
-    <servlet-class>servlets.FillFieldServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>FillFieldServlet</servlet-name>
-    <url-pattern>/fill_field</url-pattern>
   </servlet-mapping>
 
   <servlet>

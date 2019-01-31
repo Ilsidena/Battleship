@@ -5,7 +5,6 @@ function callAJAX(){
         success: function (data) {
                      var field = data.field;
                      console.log(data.field);
-                     //var list = document.getElementsByTagName("DIV");
                      var list = $("DIV");
                      var length = list.length;
                      var i = 0;

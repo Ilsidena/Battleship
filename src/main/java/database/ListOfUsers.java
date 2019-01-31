@@ -1,6 +1,7 @@
 package database;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ListOfUsers {
     private ArrayList<Integer> id;
@@ -29,5 +30,21 @@ public class ListOfUsers {
 
     public ArrayList<String> getPassword() {
         return password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ListOfUsers that = (ListOfUsers) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, login, password);
     }
 }

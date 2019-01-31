@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GamesTable {
-    public static Game getGame (Connection con, int gameID, int id) {
+
+	public static Game getGame (Connection con, int gameID, int id) {
         try {
             String sql = "SELECT field, idPlayer1, idPlayer2, isReady1, isReady2, move, status, startTime FROM battleship.games WHERE id = ?";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -22,8 +23,16 @@ public class GamesTable {
                 move = 1;
             }
 
+		    String left = rs.getString(1).substring(0, 200);
+		    String right = rs.getString(1).substring(200);
+            String field = rs.getString(1);
+
+            if (id == rs.getInt(3)) {
+                field = right + left;
+            }
+
             return new Game(gameID
-                    , rs.getString(1) /*createCellArray(rs.getString(1))*/ // create Cell array
+                    , field
                     , rs.getInt(2)
                     , rs.getInt(3)
                     , rs.getString(4).equals("1")
@@ -35,41 +44,6 @@ public class GamesTable {
         } catch (SQLException e){
             e.printStackTrace();
             return null;
-        }
-    }
-
-//    static private Cell [] createCellArray(String data){
-//        if (data.length() == 1)
-//            return new Cell[1];
-//
-//        Cell array [] = new Cell [200];
-//
-//        for (int i = 0; i < 200; ++i)
-//            array[i] = new Cell(data.charAt(2 * i) == '1'
-//                                , data.charAt(2 * i + 1) == '1');
-//
-//        return array;
-//    }
-
-    public static void updateGame (Connection con, int id, String field, int isReady1, int isReady2, int move, int status, long startTime) {
-        String sql = "UPDATE  games set field = ?, isReady1 = ?, isReady2 = ?,move = ?, status = ?, startTime = ? WHERE id = ?";
-
-        try {
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, field);
-            preparedStatement.setInt(2, isReady1);
-            preparedStatement.setInt(3, isReady2);
-            preparedStatement.setInt(4, move);
-            preparedStatement.setInt(5, status);
-            preparedStatement.setLong(6, startTime);
-            preparedStatement.setInt(7, id);
-
-            int rs = preparedStatement.executeUpdate();
-            if(rs == 0)
-                throw new GameUpdateException(id);
-        } catch (SQLException e){
-            e.printStackTrace();
-            return;
         }
     }
 
@@ -120,11 +94,21 @@ public class GamesTable {
 
             for (int i = 0; i < rs.getRow(); ++i){
                 int enemyID = 0;
+                int status = 0;
 
-                if (id == rs.getInt(2))
+                if (id == rs.getInt(2)) {
                     enemyID = rs.getInt(3);
-                else
+                    status = rs.getInt(4);
+                }
+                else {
                     enemyID = rs.getInt(2);
+                    if (rs.getInt(4) == 1){
+                        status = 2;
+                    }
+                    else if (rs.getInt(4) == 2){
+                        status = 1;
+                    }
+                }
 
                 sql = "SELECT name FROM battleship.users WHERE id = ?";
                 preparedStatement = con.prepareStatement(sql);
@@ -134,7 +118,7 @@ public class GamesTable {
 
                 listOfGames.getList().add(new ListOfGamesRow(rs.getInt(1)
                                             , enemy.getString(1)
-                                            , rs.getInt(4)));
+                                            , status));
 
                 rs.next();
             }
@@ -179,45 +163,6 @@ public class GamesTable {
         }
     }
 
-    public static void fillField (Connection con, int id, int gameID, String field) {
-        try {
-            Game game = getGame(con, gameID, id);
-            int n = 0;
-            int move = 0;
-            int status = -1;
-
-            if (id == game.getIdPlayer1()) {
-                n = 1;
-                field += game.getField().substring(100);
-            }
-            else {
-                n = 2;
-                field = game.getField().substring(0, 100) + field;
-            }
-
-            if (game.isReady1() && game.isReady2()){
-                move = 1;
-                status = 0;
-            }
-
-            String sql = "UPDATE battleship.games SET field = ?, isReady" + n + " = ?, move = ?, status = ? WHERE id = ?";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, field);
-            preparedStatement.setInt(2, 1);
-            preparedStatement.setInt(3, move);
-            preparedStatement.setInt(4, status);
-            preparedStatement.setInt(5, gameID);
-
-            int rs = preparedStatement.executeUpdate();
-            if(rs == 0)
-                throw new GameUpdateException(id);
-        } catch (SQLException e){
-            e.printStackTrace();
-            return;
-        }
-
-    }
-
     public static void move (Connection con, int id, int gameID, int cell) {
         try {
             String sql = "SELECT field, idPlayer1, idPlayer2, isReady1, isReady2, move, status, startTime FROM battleship.games WHERE id = ?";
@@ -229,7 +174,7 @@ public class GamesTable {
                 throw new GameNotFoundException(gameID);
 
             Game game = new Game(gameID
-                    , rs.getString(1) /*createCellArray(rs.getString(1))*/ // create Cell array
+                    , rs.getString(1)
                     , rs.getInt(2)
                     , rs.getInt(3)
                     , rs.getString(4).equals("1")
@@ -249,7 +194,7 @@ public class GamesTable {
             }
             else if (id == game.getIdPlayer2()){
                 player = 2;
-                field [2 * cell + 1] = '1';
+                field [2 * (cell - 100) + 1] = '1';
             }
             else
                 throw new UserNotFoundException(id);
@@ -284,8 +229,9 @@ public class GamesTable {
             n += 200;
         }
 
-        for (i = 0; i < n; i += 2)
-            sum += field[i] & field[i + 1];
+        for (; i < n; i += 2) {
+            sum += Character.getNumericValue(field[i]) * Character.getNumericValue(field[i + 1]);
+        }
 
         return sum == 20;
     }

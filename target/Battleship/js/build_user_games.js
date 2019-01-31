@@ -1,30 +1,45 @@
+var enemy = 0;
+
 function build_block1(){
     $.ajax({
         dataType: "json",
         url: "http://localhost:8080/Battleship/get_user_games",
         success: function (data) {
-                    $("#bloc1").html("");
+                    $("#block1").html("");
 
                     var table = $("<table></table>")
                                     .addClass("table")
                                     .append(
                                         $("<tr></tr>")
-                                            .addClass("table-row")
-                                            .append($("<th></th>").html("#"))
-                                            .append($("<th></th>").html("Enemy"))
-                                            .append($("<th></th>").html("Status"))
+                                            .addClass("table_row")
+                                            .append($("<th></th>").addClass("table_cell").html("#"))
+                                            .append($("<th></th>").addClass("table_cell").html("Enemy"))
+                                            .append($("<th></th>").addClass("table_cell").html("Status"))
                                     );
 
                     data.list.forEach(function(d, i){
+                        var statusString = "";
+                        if (d.status == -1){
+                        statusString = "Preparing";
+                        }
+                        else if (d.status == 0) {
+                        statusString = "In Progress";
+                        }
+                        else if (d.status == 1) {
+                        statusString = "Win";
+                        }
+                        else if (d.status == 2) {
+                        statusString = "Lose";
+                        }
                         table.append(
                             $("<tr></tr>")
-                                .addClass("table-row")
-                                .append($("<td></td>").html(i + 1))
-                                .append($("<td></td>").html(d.players))
-                                .append($("<td></td>").addClass("toClick").html(d.status))
+                                .addClass("table_row")
+                                .append($("<td></td>").addClass("table_cell").html(i + 1))
+                                .append($("<td></td>").addClass("table_cell").html(d.players))
+                                .append($("<td></td>").addClass("table_cell toClick").html(statusString))
                         );
                     });
-                    $("#bloc1").append(table);
+                    $("#block1").append(table);
 
                     var arrayToClick = $(".toClick");
                     var arrayToClickLength = arrayToClick.length;
@@ -52,7 +67,9 @@ function build_block1(){
                                         else if (vis == "hidden") {
                                             $(".game").css("visibility", "visible");
                                             this["wasClicked"] = 1;
-                                            get_game(this["gameID"]);
+
+
+                                           get_game(this["gameID"]);
                                         }
                                     };
                     }
@@ -62,11 +79,11 @@ function build_block1(){
     });
 }
 
-function build_table(field){
+function build_table(field, shiftN){
     field.addClass("table")
                 .append(
                     $("<tr></tr>")
-                        .addClass("table-row")
+                        //.addClass("table-row")
                         .append($("<th></th>").html(""))
                         .append($("<th></th>").html("A"))
                         .append($("<th></th>").html("B"))
@@ -81,65 +98,109 @@ function build_table(field){
                 );
 
     for (var i = 0; i < 10; ++i) {
-        field.append(
-            $("<tr></tr>")
-                .addClass("table-row")
-                .append($("<th></th>").html(i + 1))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-                .append($("<th></th>").html("<div class=\"sb-element\"></div>"))
-        );
+        var tr = $("<tr></tr>")
+                    //.addClass("table-row")
+                    .append($("<th></th>").html(i + 1));
+        for(var j = 0; j < 10; ++j){
+            var div = $("<div></div>").addClass("sb-element");
+            div.attr("my", i * 10 + j + shiftN);
+            tr.append(
+                $("<td></td>").append(div)
+            );
+        }
+        field.append(tr);
     }
     return field;
 }
 
 function get_game(gameID){
+    if(typeof gameID !== "undefined")
+        this.gameID = gameID;
+
+    if(typeof this.gameID === "undefined")
+        throw new Error("this.gameID is undefined");
+
+    var that = this;
+
     $.ajax({
         dataType: "json",
-        url: "http://localhost:8080/Battleship/get_game?id=" + gameID,
+        url: "http://localhost:8080/Battleship/get_game?id=" + this.gameID,
         success: function (data) {
-                     var field = data.field;
-                     console.log(data.field);
-                     var list = $("DIV");
-                     var length = list.length;
                      var i = 0;
+                     var field = data.field;
+                      var move = data.move;
+                      var status = data.status;
+
+                      if (status > 0) {
+                         if (move == 0) {
+                             alert("YOU ARE THE WINNER!!!");
+                         }
+                         else {
+                             alert("Sorry, you lost...");
+                         }
+                         return;
+                      }
+
+                      if (move == 1){
+                         $("#player_move").html("Your Turn");
+                      }
+                      else {
+                         $("#player_move").html("Enemy's Turn");
+                      }
+                      console.log(move);
+                      var list = $("div.sb-element");
+                      var length = list.length;
+                      var i = 0;
+
+                      list.removeClass("sb-our-ship sb-miss sb-hit sb-enemy-ship");
 
                      for (var j = 0; j < length; ++j){
-                         names = list[j].className.split(" ");
+                             list[j].onclick = function(){
+                                if (move == 1){
+                                   if (this.getAttribute("my") >= 100) {
+                                      if (field[2 * this.getAttribute("my") + 1] == 0) {
+                                         field[2 * this.getAttribute("my") + 1] = 1;
 
-                         if (names.includes("sb-element")){
+                                         $.ajax({
+                                             dataType: "json",
+                                             url: "http://localhost:8080/Battleship/move?gameID=" + that.gameID + "&cell=" + this.getAttribute("my")
+                                         });
+                                         $("#player_move").html("Enemy's Turn");
+
+
+                                      }
+                                      else {
+                                         alert("You can not do it twice!");
+                                      }
+                                   }
+                                }
+                             };
                              if (field[i] == 1){
                                  if (i < 200){
-                                     list[j].className += " sb-our-ship";
-                                 }
-                                 else {
-                                     list[j].className += " sb-enemy-ship";
+                                     $(list[j]).addClass("sb-our-ship");
                                  }
                              }
                              i++;
 
                              if (field[i] == 1) {
                                  if (field[i - 1] == 0){
-                                     list[j].className += " sb-miss";
+                                     $(list[j]).addClass("sb-miss");
                                  }
                                  else {
-                                     list[j].className += " sb-hit";
+                                     $(list[j]).addClass("sb-hit");
+                                     if ((i- 1) > 200){
+                                        $(list[j]).addClass("sb-enemy-ship");
+                                     }
                                  }
                              }
                              i++;
-                         }
                      }
-                     setTimeout(get_game(gameID), 2000);
+                     setTimeout(get_game, 2000);
                  }
     });
 }
+
+
 
 var newGameForm = $("<div></div>").html("<form  action=\"new_game\" method=\"post\">"
                                             + "Enemy:<input type=\"text\" name=\"enemy\" id=\"enemy_name\">"
@@ -148,18 +209,20 @@ var newGameForm = $("<div></div>").html("<form  action=\"new_game\" method=\"pos
 $("#row1").append(newGameForm);
 
 var game = $("<div></div>").addClass("game");
+var gameStatus = $("<h3></h3>").html("---").attr("id", "player_move");
+game.append(gameStatus);
 build_block1();
 
 var field1 = $("<table></table>");
 var field2 = $("<table></table>");
 var div1 = $("<div></div>").addClass("field")
     .append($("<h3></h3>").html("Your field"))
-    .append(build_table(field1));
+    .append(build_table(field1, 0));
 var div2 = $("<div></div>").addClass("field")
     .append($("<h3></h3>").html("Enemy's field"))
-    .append(build_table(field2));
+    .append(build_table(field2, 100));
 game.append(div1).append(div2);
-$("#bloc2").append(game);
+$("#block2").append(game);
 
 
 //function callAJAX(){

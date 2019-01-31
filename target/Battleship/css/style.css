@@ -1,31 +1,172 @@
-p
+body
 {
 	font-family: "Courier", Monospace;
+	color: #6E6E6E;
 	font-weight: bold;
+	font-size: 20px;
 }
-#block_container
+
+#menu
 {
-	text-align:left;
+    text-align: center;
+	color: #9CC5DD;
+	font-size: 20px;
 }
-#bloc1, #bloc2
+
+.titlepage
 {
-	display:inline-block;
-	vertical-align:top
+    font-weight: bold;
+    font-size: 50px;
+    color: #2C7396;
+    text-align: center;
 }
+
+a:visited, a:active
+{
+    color: #9E9E9E;
+}
+
+#start_button, #lo_button, #li_button, #su_button
+{
+    background: #F2F3F3;
+    color: #6E6E6E;
+    border-style: solid;
+    border-color: #6E6E6E;
+    font-family: "Courier", Monospace;
+    font-weight: bold;
+    font-size: 15px;
+    height: 30px;
+    width: 80px;
+    text-shadow:none;
+    margin-left: 10px;
+}
+
+#enemy_name, #li_login, #li_password, #su_name, #su_login, #su_password
+{
+    background: #F2F3F3;
+    color: #6E06E6E;
+    border-style: solid;
+    border-color: #6E6E6E;
+    font-family: "Courier", Monospace;
+    font-weight: bold;
+    font-size: 15px;
+    text-shadow:none;
+    margin-left: 10px;
+}
+
 .game
 {
 	visibility:hidden;
 }
+
 .field
 {
 	display:inline-block;
-	vertical-align:top
+	vertical-align:top;
 }
-.left {
+
+#block_container
+{
+    margin-left: 50px;
+}
+
+.table_row
+{
+	background-color: #F2F3F3;
+	text-align: center;
+}
+
+#block1, #block2
+{
+	display:inline-block;
+	vertical-align:top;
+}
+
+#block2
+{
+    margin-left: 50px;
+}
+
+.table_cell
+{
+    padding: 10px;
+}
+
+.left
+{
+  float: left;
+  display: inline;
+}
+
+.right
+{
   float: left;
   display: inline
 }
-.right {
-  float: left;
-  display: inline
+
+.sb-field
+{
+	border: 1px solid black;
+	display: inline-block;
+}
+
+.sb-element
+{
+	width: 30px;
+	height: 30px;
+	background-color: #F2F3F3;
+}
+
+.sb-our-ship
+{
+	background-color: blue;
+}
+
+.sb-enemy-ship
+{
+	background-color: red;
+}
+
+.sb-target:hover
+{
+	background-image: url('resources/target.png');
+	background-size: 30px  30px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.sb-hit
+{
+	background-image: url('resources/hit.png');
+	background-size: 30px  30px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.sb-miss
+{
+	background-image: url('resources/miss.png');
+	background-size: 30px  30px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.login_button .login_form
+{
+    display: none;
+}
+
+.login_button:hover .login_form
+{
+    display: block;
+}
+
+.signup_button .signup_form
+{
+    display: none;
+}
+
+.signup_button:hover .signup_form
+{
+    display: block;
 }

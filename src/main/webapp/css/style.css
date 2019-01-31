@@ -6,14 +6,11 @@ body
 	font-size: 20px;
 }
 
-
-
 #menu
 {
     text-align: center;
 	color: #9CC5DD;
 	font-size: 20px;
-	margin-bottom: 20px;
 }
 
 .titlepage
@@ -29,7 +26,7 @@ a:visited, a:active
     color: #9E9E9E;
 }
 
-#start_button
+#start_button, #lo_button, #li_button, #su_button
 {
     background: #F2F3F3;
     color: #6E6E6E;
@@ -39,12 +36,12 @@ a:visited, a:active
     font-weight: bold;
     font-size: 15px;
     height: 30px;
-    width: 60px;
+    width: 80px;
     text-shadow:none;
     margin-left: 10px;
 }
 
-#enemy_name
+#enemy_name, #li_login, #li_password, #su_name, #su_login, #su_password
 {
     background: #F2F3F3;
     color: #6E06E6E;
@@ -154,18 +151,22 @@ a:visited, a:active
 	background-position: center center;
 }
 
-.login_button .login_form {
+.login_button .login_form
+{
     display: none;
 }
 
-.login_button:hover .login_form{
+.login_button:hover .login_form
+{
     display: block;
 }
 
-.signup_button .signup_form {
+.signup_button .signup_form
+{
     display: none;
 }
 
-.signup_button:hover .signup_form{
+.signup_button:hover .signup_form
+{
     display: block;
 }

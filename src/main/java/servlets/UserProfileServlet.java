@@ -51,11 +51,10 @@ public class UserProfileServlet extends HttpServlet {
         out.println("<p>Name: " + user.getName() + "</p>");
         out.println("<p>Active games: " + activeGames + "</p>");
         out.println("<p>Scores: " + user.getScores() + "</p>");
-        out.println("<p>Status: online</p>");
         out.println("<form id=\"logout\" action=\"logout\" method=\"get\">"
-                        + "<input type=\"submit\" value=\"Log Out\">"
+                        + "<input type=\"submit\" value=\"Log Out\" id=\"lo_button\">"
                     + "</form>");
-        out.println("</html></body>");
+        out.println("</body></html>");
         out.close();
     }
 

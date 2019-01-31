@@ -1,5 +1,5 @@
-database/Game.class
 database/ListOfGamesRow.class
+database/Game.class
 servlets/LogoutServlet.class
 servlets/MoveServlet.class
 database/ListOfUsers.class
@@ -14,15 +14,10 @@ servlets/GetRatingServlet.class
 database/User.class
 database/ListOfGames.class
 database/UserNotFoundException.class
-database/Cell.class
-servlets/FillFieldServlet$Feild.class
 servlets/NewGameServlet.class
-servlets/PlayGameServlet.class
 database/GameUpdateException.class
-servlets/FillFieldServlet.class
 servlets/UserProfileServlet.class
 database/RatingRow.class
-servlets/GetAllUsersServlet.class
 servlets/SignupServlet.class
 database/ExistingUserExceptiont.class
 servlets/GetUserGamesServlet.class

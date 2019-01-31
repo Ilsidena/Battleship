@@ -83,7 +83,7 @@ function build_table(field, shiftN){
     field.addClass("table")
                 .append(
                     $("<tr></tr>")
-                        .addClass("table-row")
+                        //.addClass("table-row")
                         .append($("<th></th>").html(""))
                         .append($("<th></th>").html("A"))
                         .append($("<th></th>").html("B"))
@@ -99,7 +99,7 @@ function build_table(field, shiftN){
 
     for (var i = 0; i < 10; ++i) {
         var tr = $("<tr></tr>")
-                    .addClass("table-row")
+                    //.addClass("table-row")
                     .append($("<th></th>").html(i + 1));
         for(var j = 0; j < 10; ++j){
             var div = $("<div></div>").addClass("sb-element");
@@ -142,10 +142,10 @@ function get_game(gameID){
                       }
 
                       if (move == 1){
-                         $("#player_move").html("you");
+                         $("#player_move").html("Your Turn");
                       }
                       else {
-                         $("#player_move").html("enemy");
+                         $("#player_move").html("Enemy's Turn");
                       }
                       console.log(move);
                       var list = $("div.sb-element");
@@ -155,8 +155,6 @@ function get_game(gameID){
                       list.removeClass("sb-our-ship sb-miss sb-hit sb-enemy-ship");
 
                      for (var j = 0; j < length; ++j){
-                         //if ($(list[j]).hasClass("sb-element")){
-                             //list[j]["my"] = i / 2;
                              list[j].onclick = function(){
                                 if (move == 1){
                                    if (this.getAttribute("my") >= 100) {
@@ -167,7 +165,7 @@ function get_game(gameID){
                                              dataType: "json",
                                              url: "http://localhost:8080/Battleship/move?gameID=" + that.gameID + "&cell=" + this.getAttribute("my")
                                          });
-                                         $("#player_move").html("enemy");
+                                         $("#player_move").html("Enemy's Turn");
 
 
                                       }
@@ -196,7 +194,6 @@ function get_game(gameID){
                                  }
                              }
                              i++;
-                         //}
                      }
                      setTimeout(get_game, 2000);
                  }
@@ -224,7 +221,6 @@ var div1 = $("<div></div>").addClass("field")
 var div2 = $("<div></div>").addClass("field")
     .append($("<h3></h3>").html("Enemy's field"))
     .append(build_table(field2, 100));
-//var infobox = $("<div></div>").addClass("infobox").html("Enemy: ");
 game.append(div1).append(div2);
 $("#block2").append(game);
 

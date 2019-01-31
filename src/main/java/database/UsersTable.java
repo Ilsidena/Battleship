@@ -98,30 +98,6 @@ public class UsersTable {
         }
     }
 
-    public static ListOfUsers getAllUsers (Connection con) {
-        try {
-            String sql = "SELECT id, name, login, password FROM battleship.users";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            ListOfUsers listOfUsers = new ListOfUsers();
-            rs.first();
-
-            for (int i = 0; i < rs.getRow(); ++i){
-                listOfUsers.getId().add(rs.getInt(1));
-                listOfUsers.getName().add(rs.getString(2));
-                listOfUsers.getLogin().add(rs.getString(3));
-                listOfUsers.getPassword().add(rs.getString(4));
-                rs.next();
-            }
-
-            return listOfUsers;
-        } catch (SQLException e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public static int getID (Connection con, String name) throws SQLException {
             String sql = "SELECT id FROM battleship.users WHERE name = ?";
             PreparedStatement preparedStatement = con.prepareStatement(sql);

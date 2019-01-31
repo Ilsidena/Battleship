@@ -4,26 +4,37 @@
         <meta charset="ISO-8859-1">
         <title>Battleship</title>
         <script src="js/jquery-3.3.1.min.js"></script>
-        <link rel="stylesheet" href="menu_style.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
-        <p>Battleship</p>
-
-        <input type="button" id="login_button" value="Log In" >
-        <div id="login_form">
-            <form  action="login" method="post">
-            Login:<input type="text" name="login"><br>
-            Password:<input type="password" name="password"><br>
-            <input type="submit" value="Log In">
-            </form>
+        <div id="menu">
+            <p class="titlepage">Battleship</p>
         </div>
-        <input type="button" id="signup_button" value="Sing Up" >
-        <form id="signup_form" action="signup" method="post">
-            Name:<input type="text" name="name"><br>
-            Login:<input type="text" name="login"><br>
-            Password:<input type="password" name="password"><br>
-            <input type="submit" value="Sign Up">
-        </form>
+
+        <div class="login_button">
+            <h2>Log In</h2>
+            <div class="login_form">
+                <form  action="login" method="post">
+                    Login:<input type="text" name="login" id="li_login"><br>
+                    Password:<input type="password" name="password" id="li_password"><br>
+                    <input type="submit" value="Log In" id="li_button">
+                </form>
+            </div>
+        </div>
+
+
+        <div class="signup_button">
+            <h2>Sign Up</h2>
+            <div class="signup_form">
+                <form action="signup" method="post">
+                    Name:<input type="text" name="name" id="su_name"><br>
+                    Login:<input type="text" name="login" id="su_login"><br>
+                    Password:<input type="password" name="password" id="su_password"><br>
+                    <input type="submit" value="Sign Up" id="su_button">
+                </form>
+            </div>
+        </div>
+
     </body>
     <script src="js/index.js"></script>
 </html>

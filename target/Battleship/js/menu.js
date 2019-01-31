@@ -1,5 +1,4 @@
-$("#menu").html("<p>Battleship</p>"
-		+ "| <a href=\"https://translate.google.ru/?hl=ru\">Profile</a> |"
-		+ "<a href=\"https://translate.google.ru/?hl=ru\"> Games</a> |"
-		+ "<a href=\"https://translate.google.ru/?hl=ru\"> Rating</a> |"
-		+ "<hr></hr>");
+$("#menu").html("<p class=\"titlepage\">Battleship</p>"
+		+ "| <a href=\"user_profile\">Profile</a> | "
+		+ "<a href=\"user_games.html\"> Games</a> | "
+		+ "<a href=\"user_rating.html\">Rating</a> |");
